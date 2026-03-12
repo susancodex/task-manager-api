@@ -1,3 +1,5 @@
+# task/views.py
+from django.http import JsonResponse
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
@@ -5,12 +7,16 @@ from rest_framework.response import Response
 from .models import Task
 from .serializers import TaskSerializer
 
+# Add this function:
+def home(request):
+    return JsonResponse({"message": "Welcome to Task Manager API!"})
+
+# Your TaskViewSet comes below
 class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        # Each user sees only their own tasks
         return Task.objects.filter(user=self.request.user)
     
     def perform_create(self, serializer):
@@ -22,12 +28,10 @@ class TaskViewSet(viewsets.ModelViewSet):
         task.status = 'Completed'
         task.save()
         return Response({'status': 'task marked as completed'})
-    
-from rest_framework import filters
-from django_filters.rest_framework import DjangoFilterBackend
 
-class TaskViewSet(viewsets.ModelViewSet):
-    ...
+    # Optional filters/search/ordering
+    from rest_framework import filters
+    from django_filters.rest_framework import DjangoFilterBackend
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['status', 'priority', 'due_date']
     search_fields = ['title', 'description']
