@@ -8,9 +8,14 @@ from rest_framework import permissions
 
 
 # Home route
-def home(request):
-    return JsonResponse({"message": "Welcome to Task Manager API"})
+# tasks/views.py (or wherever you keep your views)
+from django.http import JsonResponse
 
+def home(request):
+    return JsonResponse({
+        "message": "Welcome to Task Manager API",
+        "swagger_docs": "https://task-manager-api-x87n.onrender.com/swagger/"
+    })
 
 schema_view = get_schema_view(
     openapi.Info(
