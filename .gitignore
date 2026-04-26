@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local database
+db.sqlite3
+
+# Virtual environments
+venv/
+.venv/
+
+# macOS
+.DS_Store

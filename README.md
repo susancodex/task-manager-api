@@ -83,7 +83,7 @@ advanced_task_manager/
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/susanacharya12/task-manager-api.git
-cd task-manager-api/advanced_task_manager
+cd Task_Manager_Api/task-manager-api-1
 ```
 
 ### 2. Create Virtual Environment
@@ -126,20 +126,39 @@ Once the server is running:
 - **Username**: susanacharya
 - **Password**: 123
 
-## Deployment
+## Deploy on Render
 
-The API is deployed on Render and accessible at:
-- **Live API**: https://task-manager-api-x87n.onrender.com
-- **Swagger Docs**: https://task-manager-api-x87n.onrender.com/swagger/
-- **ReDoc Docs**: https://task-manager-api-x87n.onrender.com/redoc/
+This project includes a ready-to-use `render.yaml` blueprint.
+
+### 1. Push code to GitHub/GitLab/Bitbucket
+Render needs your repository to create services from `render.yaml`.
+
+### 2. Create Blueprint from repo
+Open:
+
+`https://dashboard.render.com/blueprint/new`
+
+Select your repository and apply the blueprint.
+
+### 3. Set environment values if needed
+These are configured automatically in `render.yaml`:
+- `SECRET_KEY` (generated)
+- `DATABASE_URL` (from managed Postgres)
+- `DEBUG=False`
+
+### 4. After deploy
+- API root: `https://<your-service>.onrender.com/`
+- Swagger: `https://<your-service>.onrender.com/swagger/`
+- ReDoc: `https://<your-service>.onrender.com/redoc/`
 
 ## Environment Variables
 
-Create a `.env` file in the project root:
+Create a `.env` file in the project root for local development:
 ```env
 SECRET_KEY=your-secret-key
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
+CSRF_TRUSTED_ORIGINS=http://localhost:8000
 ```
 
 ## License
