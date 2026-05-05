@@ -1,0 +1,112 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "task-manager-api"
+version = "1.0.0"
+description = "A production-ready Django REST API for task management with JWT authentication"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "Susana Charya", email = "your-email@example.com"}
+]
+keywords = ["django", "rest-api", "task-management", "jwt", "drf"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 6.0",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    "Django==6.0.3",
+    "djangorestframework==3.16.1",
+    "djangorestframework_simplejwt==5.5.1",
+    "drf-yasg==1.21.15",
+    "django-filter==25.2",
+    "gunicorn==25.1.0",
+    "psycopg[binary]==3.2.12",
+    "dj-database-url==3.0.1",
+    "whitenoise==6.12.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/susanacharya12/task-manager-api"
+Documentation = "https://github.com/susanacharya12/task-manager-api/README.md"
+Repository = "https://github.com/susanacharya12/task-manager-api.git"
+"Bug Tracker" = "https://github.com/susanacharya12/task-manager-api/issues"
+
+[tool.setuptools]
+packages = ["config", "task"]
+
+[tool.black]
+line-length = 100
+target-version = ['py311', 'py312', 'py313']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | migrations
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+skip = [".venv", "migrations", "__pycache__"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+addopts = "--cov=. --cov-report=html --cov-report=term-missing"
+testpaths = ["task"]
+
+[tool.mypy]
+python_version = "3.13"
+check_untyped_defs = true
+ignore_missing_imports = true
+exclude = ["venv", "migrations", "__pycache__", ".venv"]
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    "*/migrations/*",
+    "*/tests/*",
+    "*/__pycache__/*",
+    "*/site-packages/*",
+    "manage.py",
+    "setup.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]

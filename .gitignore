@@ -1,13 +1,103 @@
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+pip-log.txt
+pip-delete-this-directory.txt
 
-# Local database
+# Django
+*.log
+*.pot
+/staticfiles/
+/media/
 db.sqlite3
+db.sqlite3-journal
+.env
+.env.local
+.env.*.local
 
 # Virtual environments
 venv/
 .venv/
+env/
+ENV/
+env.bak/
+venv.bak/
 
-# macOS
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Testing
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+
+# Database backups
+*.backup
+*.sql
+db.sqlite3-wal
+db.sqlite3-shm
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Security
+*.pem
+*.key
+secrets.json
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+temp/
+tmp/
