@@ -145,6 +145,8 @@ These are configured automatically in `render.yaml`:
 - `SECRET_KEY` (generated)
 - `DATABASE_URL` (from managed Postgres)
 - `DEBUG=False`
+- `ALLOWED_HOSTS=.onrender.com,127.0.0.1,localhost`
+- `CSRF_TRUSTED_ORIGINS=https://*.onrender.com,http://127.0.0.1:8000,http://localhost:8000`
 
 ### 4. After deploy
 - API root: `https://<your-service>.onrender.com/`
